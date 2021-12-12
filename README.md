@@ -1,7 +1,3 @@
-# php-starter
+# Steps for the project.
 
-If you are reading this in your assignment repo, please read [assignment submission guidelines](https://learn.rtcamp.com/campus/php-assignments/guidelines/) before proceeding.
-
-Then make sure to replace content of the file with information relevant to your assignment. 
-
-Writing your own README.md file is required anyway as per [assignment submission guidelines](https://learn.rtcamp.com/campus/php-assignments/guidelines/).
+Firstly, I will create a index.php file, which will only contain html data for some user interface. ( I use ".php" instead of ".html" to give a better look for php project.)
