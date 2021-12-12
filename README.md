@@ -7,7 +7,7 @@ I have also used the mailing accounts of this hosting for email purposes.
 
 # Steps for the project.
 
-Firstly, I created a index.php file, which only contain html data for some user interface. 
+Firstly, I have created a index.php file, which only contain html data for some user interface. 
 ( I used ".php" instead of ".html" format to give a better look for php project.)
 
 Then, I wrote javascript and css file to give functionality and styles to html body. (Basic Structure)
@@ -41,9 +41,9 @@ This is the first time I have created mailing function in core.
 At one point, I was gettting the emails in promotions, but quikly after some time I figured it out that this is because of the absence of "reply" header in the format.
 But I have found solution by reading documentation and google syntax.
 
-Also, faced problem during the fethcing of image data and processing it for the attachment.
+Also, faced problem during the fetching of image data and processing it for the attachment.
 At a point of time, i was getting only garbage data in place of image, which was because of absence of MIME image type in the attachment header.
 
-Also, faces simple syntax errors, bug errors and misprinting errors during the project, but figured them out quikly.
+Also, faced simple syntax errors, bug errors and misprinting errors during the project, but figured them out quickly.
 This is because i have used PHP after a little long time, because recently I am doing a project in "MERN".
 
