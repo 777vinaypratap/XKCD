@@ -1,12 +1,13 @@
-<?php 
-if(!defined('format')) {
+<?php
+if (!defined('format')) {
     die('Nothing is available');
- }
+}
 ?>
 
-<?php 
-function htmlformat($title,$content,$link, $linktext){
-    $format='<!DOCTYPE html>
+<?php
+function htmlformat($title, $content, $link, $linktext)
+{
+    $format = '<!DOCTYPE html>
     <html lang="en">
     <head>
         <meta charset="UTF-8">
@@ -16,11 +17,11 @@ function htmlformat($title,$content,$link, $linktext){
     </head>
     <body><div>
     <div id="logo" >
-        <h1>'.$title.'</h1>
+        <h1>' . $title . '</h1>
     </div>
     <div id="content">
-        <p>'.$content.'</p>
-        <a href='.$link.' >'.$linktext.'</a>
+        <p>' . $content . '</p>
+        <a href=' . $link . ' >' . $linktext . '</a>
     </div>
     <style>
         
@@ -70,6 +71,6 @@ function htmlformat($title,$content,$link, $linktext){
 </html>';
 
 
-return $format;
+    return $format;
 }
 ?>
