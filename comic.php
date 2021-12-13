@@ -43,5 +43,6 @@ $img = chunk_split(base64_encode($file));
 $file_info = new finfo(FILEINFO_MIME_TYPE);
 $type = $file_info->buffer($file);
 $attach=[$title,$img,$type];
+$imgtag='<img src="'.$imgurl.'" alt="Problem loading img" >';
 //echo var_dump($attach[0]);
 ?>

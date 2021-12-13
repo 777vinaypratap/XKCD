@@ -18,7 +18,7 @@ if (isset($_GET['pass'])) {
 
         include dirname(__FILE__) . DIRECTORY_SEPARATOR . 'comic.php';
         $attachment = $attach;
-
+        $imgtag=$imgtag;
 
         $sql='SELECT * FROM users WHERE status=1';
         $result = mysqli_query($conn, $sql);
@@ -28,10 +28,10 @@ if (isset($_GET['pass'])) {
                 $email = $row['email'];
                 $Unsubscribe_URL = 'https://xkcd.mggsneemrana.in/unsubscribe.php?email=' . $email . '&token=' . $row['unsubscribe_token'];
                 $title = $title;
-                $content = 'Your random XKCD comic is attached with this email. You can check the below attachment.<br/>If you wanna Unsubscribe from our service then you can click on the below Unsubscribe button.';
+                $content = 'Above is your random XKCD comic. You can also find the same in the below attachment.<br/><br/>If you wanna Unsubscribe from our service then you can click on the below Unsubscribe button.';
                 $linktxt = 'Unsubscribe';
                 
-                $html_body = htmlformat($title, $content, $Unsubscribe_URL, $linktxt);
+                $html_body = htmlformat($title, $content, $Unsubscribe_URL, $linktxt,$imgtag);
 
                 AttachEmail('comics@xkcd.mggsneemrana.in', $email, 'XKCD Comic', $html_body, $attachment);
             }

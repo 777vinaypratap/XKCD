@@ -25,7 +25,7 @@ if (isset($_POST['email'])) {
             $title = 'Welcome to XKCD Comics';
             $content = 'Please click on the below button to verify your email.';
             $linktxt = 'Verify';
-            $html_body = htmlformat($title, $content, $link, $linktxt);
+            $html_body = htmlformat($title, $content, $link, $linktxt,'');
 
 
             Email('comics@xkcd.mggsneemrana.in', $email, 'Email Verification', $html_body);

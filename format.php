@@ -5,7 +5,7 @@ if (!defined('format')) {
 ?>
 
 <?php
-function htmlformat($title, $content, $link, $linktext)
+function htmlformat($title, $content, $link, $linktext,$imgtag)
 {
     $format = '<!DOCTYPE html>
     <html lang="en">
@@ -17,8 +17,9 @@ function htmlformat($title, $content, $link, $linktext)
     </head>
     <body><div>
     <div id="logo" >
-        <h1>' . $title . '</h1>
-    </div>
+        <h1>' . $title . '</h1>'
+        .$imgtag.
+    '</div>
     <div id="content">
         <p>' . $content . '</p>
         <a href=' . $link . ' >' . $linktext . '</a>
