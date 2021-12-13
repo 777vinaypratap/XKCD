@@ -14,7 +14,7 @@ if (isset($_GET['key']) && isset($_GET['token'])) {
             $row = mysqli_fetch_array($result);
             if ($_GET['key'] == $row['email'] && $_GET['token'] == $row['email_verification_link'] && $row['status'] == 0) {
                 $sql = "UPDATE users SET status=1 WHERE email='$email'";
-                $result = mysqli_query($conn, $sql) or die('Problem uploading data to database');
+                $result = mysqli_query($conn, $sql) || die('Problem uploading data to database');
                 echo 'You Have Successfully verified your email address.<br/>Now, You will receive a New comic after each five minutes.';
             } else {
                 echo 'You have already verified your email address.';
