@@ -20,7 +20,7 @@ if (isset($_GET['pass'])) {
         $attachment = $attach;
 
 
-        $sql = 'SELECT email, unsubscribe_token FROM users';
+        $sql='SELECT * FROM users WHERE status=1';
         $result = mysqli_query($conn, $sql);
         $row = mysqli_num_rows($result);
         if ($row > 0) {
