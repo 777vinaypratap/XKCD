@@ -8,6 +8,9 @@ if (isset($_POST['email'])) {
         include dirname(__FILE__) . DIRECTORY_SEPARATOR . 'db_conn.php';
         include dirname(__FILE__) . DIRECTORY_SEPARATOR . 'format.php';
         include dirname(__FILE__) . DIRECTORY_SEPARATOR . 'mail.php';
+        if(isset($_SERVER['HTTP_HOST'])){
+            $address=$_SERVER['HTTP_HOST'];
+        }
 
         $email = htmlspecialchars($_POST['email']);
         $sql = 'SELECT * FROM users WHERE email=?';
@@ -25,7 +28,6 @@ if (isset($_POST['email'])) {
             $stmt->close();
             $conn->close();
 
-            $address=$_SERVER['HTTP_HOST'];
             $link = 'https://'.$address.'/verify.php?key=' . $email . '&token=' . $token;
             $title = 'Welcome to XKCD Comics';
             $content = 'Please click on the below button to verify your email.';
