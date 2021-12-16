@@ -2,20 +2,19 @@
 if (!defined('mail')) {
     die('Nothing is available');
 }
-?>
-
-<?php
-
-function AttachEmail($from, $to, $subject, $message, $attachment)
+$ini = parse_ini_file('php.ini');
+$name=$ini['mail_name'];
+$email=$ini['mail'];
+function AttachEmail($to, $subject, $message, $attachment)
 {
     // a random hash will be necessary to send mixed content
     $boundary = md5(uniqid(time()));
 
     //header
     $headers = "MIME-Version: 1.0\r\n"; // Defining the MIME version
-    $headers .= "From:" . $from . "\r\n"; // Sender Email
-    $headers .= "Reply-To: " . $from . "\r\n"; // Email address to reach back
-    $headers .= "Content-Type: multipart/mixed;"; // Defining Content-Type
+    $headers .= 'From: '.$GLOBALS['name'].'<'.$GLOBALS['email'].">\r\n"; // Sender Email
+    $headers .= 'Reply-To: '.$GLOBALS['email']."\r\n"; // Email address to reach back
+    $headers .= 'Content-Type: multipart/mixed;'; // Defining Content-Type
     $headers .= "boundary = $boundary\r\n"; //Defining the Boundary
 
     //plain text
@@ -26,30 +25,27 @@ function AttachEmail($from, $to, $subject, $message, $attachment)
 
     //attachment
     $body .= "--$boundary\r\n";
-    $body .= "Content-Type: " . $attachment[2] . "; name=" . $attachment[0] . "\r\n";
-    $body .= "Content-Disposition: attachment; filename=" . $attachment[0] . "\r\n";
+    $body .= 'Content-Type: ' . $attachment[2] . '; name=' . $attachment[0] . "\r\n";
+    $body .= 'Content-Disposition: attachment; filename=' . $attachment[0] . "\r\n";
     $body .= "Content-Transfer-Encoding: base64\r\n";
-    $body .= "X-Attachment-Id: " . rand(1000, 99999) . "\r\n\r\n";
+    $body .= 'X-Attachment-Id: ' . rand(1000, 99999) . "\r\n\r\n";
     $body .= $attachment[1]; // Attaching the encoded file with email
     //SEND Mail
     if (mail($to, $subject, $body, $headers)) {
-        echo "Your mail has been sent successfully."; // or use booleans here
+        echo 'Your mail has been sent successfully.'; // or use booleans here
     } else {
-        echo "Unable to send email. Please try again";
-        // print_r( error_get_last() );
+        echo 'Unable to send email. Please try again';
     }
 }
-
-
-function Email($from, $to, $subject, $message)
+function Email( $to, $subject, $message)
 {
     // To send HTML mail, the Content-type header must be set
     $headers  = 'MIME-Version: 1.0' . "\r\n";
     $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
 
     // Create email headers
-    $headers .= 'From: ' . $from . "\r\n" .
-        'Reply-To: ' . $from . "\r\n" .
+    $headers .= 'From: '.$GLOBALS['name'].'<'.$GLOBALS['email'].">\r\n" .
+        'Reply-To: '.$GLOBALS['email']."\r\n" .
         'X-Mailer: PHP/' . phpversion();
 
 
@@ -62,5 +58,4 @@ function Email($from, $to, $subject, $message)
         echo 'There is a problem sending email. Please try again.';
     }
 }
-
 ?>

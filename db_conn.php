@@ -2,15 +2,14 @@
 if (!defined('database')) {
     die('Nothing is available');
 }
-?>
+$ini = parse_ini_file('php.ini');
 
-<?php
-$servername = 'localhost';
-$username = 'XYZ';
-$password = 'abcd';
-$dbname = "Users";
-$conn = mysqli_connect($servername, $username, $password, $dbname);
-if (!$conn) {
-    die('Unable to connect to database:' . mysqli_connect_error());
+$servername = $ini['db_server_name'];
+$username = $ini['db_user'];
+$password = $ini['db_pass'];
+$dbname = $ini['db_name'];
+$conn = new mysqli($servername, $username, $password, $dbname);
+if(!$conn){
+    die('ERROR: Could not connect. ' . $conn->connect_error);
 }
 ?>

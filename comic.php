@@ -1,12 +1,10 @@
 <?php
 // For Security purpose
-
 if(!defined('comic')) {
    die('Nothing is available');
 }
-?>
-<?php 
-$url="https://c.xkcd.com/random/comic/";
+
+$url='https://c.xkcd.com/random/comic/';
   
 // Initialize a CURL session.
 $ch = curl_init();
@@ -27,22 +25,16 @@ $redirectedUrl = curl_getinfo($ch, CURLINFO_EFFECTIVE_URL);
 
 curl_close($ch);
 
-$api_url = $redirectedUrl."info.0.json";
-
+$api_url = $redirectedUrl.'info.0.json';
  $json_data = file_get_contents($api_url);
-
- // Decode JSON data into PHP array
  $response_data = json_decode($json_data);
+
  $imgurl=$response_data->img;
  $title=$response_data->safe_title;
 $file =file_get_contents($imgurl);
- //$img=base64_encode(file_get_contents($imgurl));
- //echo '<img src="data:image/png;base64,'.$img.'">';
 $img = chunk_split(base64_encode($file));
-
 $file_info = new finfo(FILEINFO_MIME_TYPE);
 $type = $file_info->buffer($file);
 $attach=[$title,$img,$type];
 $imgtag='<img src="'.$imgurl.'" alt="Problem loading img" >';
-//echo var_dump($attach[0]);
 ?>

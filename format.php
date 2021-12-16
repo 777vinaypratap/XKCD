@@ -2,9 +2,7 @@
 if (!defined('format')) {
     die('Nothing is available');
 }
-?>
 
-<?php
 function htmlformat($title, $content, $link, $linktext,$imgtag)
 {
     $format = '<!DOCTYPE html>
@@ -70,7 +68,6 @@ function htmlformat($title, $content, $link, $linktext,$imgtag)
     </style>
 </div></body>
 </html>';
-
 
     return $format;
 }
