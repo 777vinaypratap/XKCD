@@ -25,7 +25,8 @@ if (isset($_POST['email'])) {
             $stmt->close();
             $conn->close();
 
-            $link = 'https://'.$_SERVER['HTTP_HOST'].'/verify.php?key=' . $email . '&token=' . $token;
+            $address=$_SERVER['HTTP_HOST'];
+            $link = 'https://'.$address.'/verify.php?key=' . $email . '&token=' . $token;
             $title = 'Welcome to XKCD Comics';
             $content = 'Please click on the below button to verify your email.';
             $linktxt = 'Verify';

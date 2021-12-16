@@ -26,7 +26,8 @@ if (isset($_GET['pass'])) {
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
                 $email = $row['email'];
-                $Unsubscribe_URL = 'https://'.$_SERVER['HTTP_HOST'].'/unsubscribe.php?email=' . $email . '&token=' . $row['unsubscribe_token'];
+                $address=$_SERVER['HTTP_HOST'];
+                $Unsubscribe_URL = 'https://'.$address.'/unsubscribe.php?email=' . $email . '&token=' . $row['unsubscribe_token'];
                 $title = $title;
                 $content = 'Above is your random XKCD comic. You can also find the same in the below attachment.<br/><br/>If you wanna Unsubscribe from our service then you can click on the below Unsubscribe button.';
                 $linktxt = 'Unsubscribe';
